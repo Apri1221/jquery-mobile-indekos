@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Page Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css" /> -->
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css" />
+	<link rel="stylesheet" type="text/css" href="css/mycss.css" />
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery.mobile-1.4.5.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<!-- halaman 1 -->
+	<div data-role="page" id="page-one" class="ui-body-a">
+
+		<!-- panel kiri apri | ini tidak digunakan lagi, saya menggenerate semua panel di seluruh view -->
+		<!-- <div data-role="panel" id="panel" data-position-fixed="true" data-dismissible="false">
+			<h2>Menu</h2>
+			<ul data-role="listview">
+				<li><a href="#page-one">Daftar Penyewaan</a></li>
+				<li><a href="#page-three">About Us</a></li>
+			</ul>
+		</div> -->
+
+		<!-- panel kanan -->
+		<!-- <div data-role="panel" id="panel2" data-position="right" data-position-fixed="true" data-dismissible="false">
+			<h2>Pengaturan Akun</h2>
+			<div data-role="controlgroup" data-type="vertical">
+				<div class="ui-block">
+					<button data-icon="flat-man" data-theme="c">Edit Profil</button>
+					<a href="#" class="ui-btn">Keluar</a>
+				</div>
+			</div>
+		</div> -->
+
+		<!-- navbarnya -->
+		<div data-role="header" data-position="fixed" data-tap-toggle="false">
+			<h1>Daftar Penyewaan</h1>
+			<a href="#panel" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-bars">Menu</a>
+			<a href="#panel2" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-user">Akun</a>
+		</div>
+
+		<!-- pencarian -->
+		<div data-role="content" class="ui-content">
+			<form class="ui-filterable">
+				<input id="pencarian" data-type="search" placeholder="Apa?">
+			</form>
+			<ul id="list-mhs" data-role="listview" data-filter="true" data-inset="true" data-input="#pencarian">
+			</ul>
+		</div>
+	</div>
+
+
+	<!-- halaman 2 -->
+	<div data-role="page" id="page-two" data-theme="a">
+		<div data-role="header">
+			<h1>Detail Mahasiswa</h1>
+		</div>
+
+		<div data-role="content" class="ui-content">
+			<table data-role="table" data-mode="reflow" id="table-detailMhs">
+			</table>
+			<a href="#" class="ui-btn" data-rel="back">Kembali</a>
+		</div>
+	</div>
+
+	<!-- halaman 3 -->
+	<div data-role="page" id="page-three">
+
+		<!-- navbarnya -->
+		<div data-role="header" data-position="fixed" data-tap-toggle="false" class="ui-body-a">
+			<h1>Tentang Kami</h1>
+			<a href="#panel" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-bars">Menu</a>
+			<a href="#panel2" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-user">Akun</a>
+		</div>
+
+		<div data-role="content">
+			<h2>Kami ingin membantu masyarakat</h2>
+
+			<div class="team">
+				<h2>Filosofi Kami</h2>
+				<p>Berangkat dari tugas kuliah PPK yang membingungkan, apri pun berusaha mencari ide bagaimana agar apri bisa menyelesaikan mata kuliah dengan hasil yang baik berdasarkan kerja kerasnya.</p>
+
+				<p class="quote">Serius, source code laporan PPK banyak bug nya dan kini bisa diatasi satu per satu.</p>
+
+				<hr class="blankseparator" />
+				<h2>Our Latest Work</h2>
+				<div>
+					<video controls>
+						<source src="apri/Rekam8.mp4">
+					</video>
+				</div>
+
+				<hr class="blankseparator" />
+				<h2>Motivasi Saya</h2>
+				<p>Tertarik mengatasi bug nya meskipun orang lain masa bodoh dan tidak berhasil memperbaikinya. Tertarik pada web daripada android sehingga saya mencoba membenci java dan mencintai javascript meskipun awalnya php.</p>
+
+				<p class="quote">Kita satu brawijaya. Saya keluar PK2?</p>
+			</div>
+
+			<!-- social -->
+			<div class="social">
+				<a href="#"><img src="css/images/social/facebook.png" alt="facebook"></a>
+				<a href="#"><img src="css/images/social/twitter.png" alt="twitter"></a>
+				<a href="instagram.com/apri0498"><img src="css/images/social/instagram.png" alt="google"></a>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="app.js" type="text/javascript"></script>
+	<script>
+		Application.initApplication();
+
+		// kerja keras apri
+		var panel =
+			'<div data-role="panel" id="panel" data-position-fixed="true" data-theme="f" data-dismissible="false"><h2>Menu</h2><ul data-role="listview"><li><a href="#page-one">Daftar Penyewaan</a></li><li><a href="#page-three">About Us</a></li></ul></div>';
+
+		var panel2 =
+			'<div data-role="panel" id="panel2" data-position="right" data-theme="f" data-position-fixed="true" data-dismissible="false"><h2>Pengaturan Akun</h2><div data-role="controlgroup" data-type="vertical"><div class="ui-block"><button data-icon="flat-man" href="#gakbisa" data-rel="popup" data-transition="slideup" data-theme="c">Edit Profil</button><a href="#" class="ui-btn">Keluar</a></div></div></div>';
+
+		$(document).one('pagebeforecreate', function() {
+			$.mobile.pageContainer.prepend(panel);
+			$("#panel").panel().enhanceWithin();
+			$.mobile.pageContainer.prepend(panel2);
+			$("#panel2").panel().enhanceWithin();
+		});
+		// akhir dari kerja kerasnya
+	</script>
+</body>
+</html>
